@@ -1,0 +1,122 @@
+<!-- 轮播图
+步骤：
+点击展开菜单
+鼠标划过
+点击切换相册
+标签页效果
+
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>轮播图</title>
+    <!-- 或者外部js -->
+    <script src=gua.js></script>
+    <!-- 一般进行改变的时候我们一般用css，不用js -->
+    <style>
+        /*
+       轮播图
+        */
+        /*父节点一定要相对的relative;*/
+        .gua-slide {
+            /*overflow消除溢出*/
+            overflow:hidden;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        /* .gua-slide img {
+           height: 100px;
+           weight: 100px;
+         }*/
+        .gua-slide-img {
+            display: none;
+        }
+        .gua-active {
+            display: inline-block;
+        }
+        /*居中设置*/
+        .gua-slide-before {
+            left: 0;
+            height: 15%;
+        }
+        .gua-slide-next {
+            right: 0;
+            height: 15%;
+        }
+        .gua-vertical-center {
+
+            /* display: none; */
+            width: 30px;
+            height: 60px;
+            /*透明*/
+            background-color: rgba(0,0,0,0.4);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index:999;
+        }
+        /*设置圆形*/
+        .gua-slide-indi {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #b4b5b7;;
+            /*cursor光标设置*/
+            cursor:pointer;
+        }
+        .gua-slide-indicators {
+            height: 15px;
+            width:100%;
+            margin: 0px auto;
+            text-align: center;
+            position: absolute;
+            margin-top: -40px;
+            z-index: 3;
+        }
+        .gua-white {
+            background: #ffb23c;
+        }
+        /*绘制三角形 */
+        .gua-vertical-center span {
+            display: block;
+            width: 15px;
+            height: 15px;
+            border-bottom: 2px solid #fff;
+            border-left: 2px solid #fff;
+        }
+        .slider_right {
+            margin: 25px 0 0 5px;
+            transform: rotate(-135deg);
+        }
+        .slider_left {
+            margin: 25px 0 0 10px;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+<!-- 3 -->
+<div class="gua-slide" data-imgs = 3 data-active = 0>
+    <!-- img -->
+    <img id = id-guaimage-0 class="gua-slide-img gua-active" src="slide_1.jpg" alt="">
+    <img id = id-guaimage-1 class="gua-slide-img" src="slide_2.jpg" alt="">
+    <img id = id-guaimage-2 class="gua-slide-img" src="slide_3.jpg" alt="">
+    <div class="gua-slide-next gua-vertical-center" data-imgs = 3 data-active = 0>
+        <span class="slider_right"></span>
+    </div>
+    <div class="gua-slide-before gua-vertical-center" data-imgs = 3 data-active = 0>
+        <span class="slider_left"></span>
+    </div>
+</div>
+<!-- 圆点 -->
+<div class="gua-slide-indicators" data-active = 0>
+    <div id = id-guaspan-0 class="gua-slide-indi gua-white"></div>
+    <div id = id-guaspan-1 class="gua-slide-indi"></div>
+    <div id = id-guaspan-2 class="gua-slide-indi"></div>
+</div>
+<script src="3.js"></script>
+</body>
+</html>
