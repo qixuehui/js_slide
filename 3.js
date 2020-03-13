@@ -45,36 +45,11 @@ var bindEventNext = function() {
     var selector= '.gua-slide-next'
     selectorall(selector, 'click', function(event) {
       clearInterval(_timer)//细节处理，关闭定时，防止点切图和定时器函数冲突
-      //按钮处---------div
-      // var p = event.target.parentElement
-      //如何跳到下一张
-      //图片总数，当前图片下标
-      // var numberOfImgs = parseInt(p.dataset.imgs)
-      // var activeIndex = parseInt(p.dataset.active)
-      // log(numberOfImgs)
-      // log(activeIndex)
-      log('click slide')
       //求出下一张的id
       nextIndex = (nextIndex + 1) % img_number
       // log(nextIndex)
       //获取当前下一张页面的id
-       // 设置父节点的 data-active
-       // p.dataset.active = nextIndex
-
-      var nextSelector = '#id-guaimage-' + String(nextIndex)
-      var className = 'gua-active'
-      removeclassall(className)
-      var img = e(nextSelector)
-
-      var radiusSelector  = '#id-guaspan-' + String(nextIndex)
-      var radiusclassName = 'gua-white'
-      removeclassall(radiusclassName)
-      var radiusimg = e(radiusSelector)
-      // log(className)
-      // console.log(img)
-      //删除当前class，增加下一张class
-      img.classList.add(className)
-      radiusimg.classList.add(radiusclassName)
+      slideTo(nextIndex)
       _timer = setInterval(runFn,2000)//点击事件处理完成，继续开启定时轮播
     })
 }
@@ -83,7 +58,6 @@ var bindEventbefor = function() {
     var selector= '.gua-slide-before'
     selectorall(selector, 'click', function(event) {
       clearInterval(_timer)//细节处理，关闭定时，防止点切图和定时器函数冲突
-      log('click before button')
       //按钮处---------div
       // var p = event.target.parentElement
       //如何跳到下一张
@@ -91,27 +65,12 @@ var bindEventbefor = function() {
       // var numberOfImgs = parseInt(p.dataset.imgs)
       // var activeIndex = parseInt(p.dataset.active)
       //求出下一张的id
-       nextIndex = (nextIndex - 1) % img_number
+       nextIndex--
       if(nextIndex == -1){
         nextIndex = img_number - 1
       }
       //获取当前下一张页面的id
-       // 设置父节点的 data-active
-       // p.dataset.active = nextIndex
-      var nextSelector = '#id-guaimage-' + String(nextIndex)
-      //删除当前class，增加下一张class
-      var className = 'gua-active'
-      removeclassall(className)
-      var img = e(nextSelector)
-      // log(className)
-      // console.log(img)
-      img.classList.add(className)
-
-      var radiusSelector  = '#id-guaspan-' + String(nextIndex)
-      var radiusclassName = 'gua-white'
-      removeclassall(radiusclassName)
-      var radiusimg = e(radiusSelector)
-      radiusimg.classList.add(radiusclassName)
+        slideTo(nextIndex)
       _timer = setInterval(runFn,2000)//点击事件处理完成，继续开启定时轮播
     })
 }
@@ -135,22 +94,4 @@ var bindEventradius = function() {
 bindEventbefor()
 bindEventNext()
 bindEventradius()
- //
- // //圆点点击切换轮播图
- //     window.onload = function  () {    //为按钮初始化onclick事件
- //        var tbs =f("gua-slide-indi")
- //        for(var i = 0; i < tbs.length; i++){
- //            tbs[i].onclick = function  () {
- //                clearInterval(_timer);//细节处理，关闭定时，防止点切图和定时器函数冲突
- //                if(this.attributes['id'].value == 'id-guaspan-0'){
- //                    nextIndex = 0
- //                }else if(this.attributes['id'].value == 'id-guaspan-1'){
- //                      nextIndex = 1
- //                }else if(this.attributes['id'].value == 'id-guaspan-2'){
- //                      nextIndex = 2
- //                }
- //                  slideTo(nextIndex)
- //                _timer = setInterval(runFn,2000)//点击事件处理完成，继续开启定时轮播
- //            }
- //        }
- //    }
+
