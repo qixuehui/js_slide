@@ -5,8 +5,4 @@
 类似京东开始界面的轮播图
 
 ＃＃展示
-
-
-
-
 ![](https://github.com/qixuehui/slide/raw/master/1.png)
